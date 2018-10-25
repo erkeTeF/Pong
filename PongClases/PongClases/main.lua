@@ -44,7 +44,7 @@ function love.draw()
    for _,v in ipairs(actorList) do
       v:draw()
     end
-    love.graphics.print(playerScore,love.graphics.getWidth() / 4, love.graphics.getHeight() / 10)
+    love.graphics.print(playerScore,love.graphics.getWidth() /4, love.graphics.getHeight() / 10)
     love.graphics.print(cpuScore,love.graphics.getWidth() / 4 * 3, love.graphics.getHeight() / 10)
     
 end
