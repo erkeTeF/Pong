@@ -13,23 +13,25 @@ end
 function Ball:update(dt)
   if (Actor.intersect(self, p) and paonde == false) then
     self.forward.x = self.forward.x * -1
+    self.forward.y = math.random(-0.8,0.8)
     ballSpeed = ballSpeed +20
     paonde = true
     
   end
   if (Actor.intersect(self, cp) and paonde) then
     self.forward.x = self.forward.x * -1
+    self.forward.y = math.random(-0.8,0.8)
     ballSpeed = ballSpeed +20
     paonde = false
   end
   
   
-  if (self.position.y <0 and parriba  ) then
+  if (self.position.y <0  ) then
       self.forward.y = self.forward.y * -1
       parriba = false
     end
     
-    if (self.position.y > love.graphics.getHeight() and parriba == false ) then
+    if (self.position.y > love.graphics.getHeight() ) then
       self.forward.y = self.forward.y * -1
       parriba = true
     end

@@ -1,8 +1,7 @@
 PalaC = Actor:extend()
 
 function PalaC:new()
-    PalaC.super.new(self,"Textures/cpu.png", love.graphics.getWidth()/20 * 19, love.graphics.getHeight()/2, 0, 0,0, 0.112, 0.112)
-    
+    PalaC.super.new(self,"Textures/cpu.png", love.graphics.getWidth()/20 * 19, love.graphics.getHeight()/2, 0, 0,0, 0.112, 0.112)    
 end
 
 function PalaC:update(dt)
