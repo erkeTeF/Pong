@@ -18,12 +18,14 @@ function Ball:update(dt)
     ballSpeed = ballSpeed +20
     paonde = true
     
+    
   end
   if (Actor.intersect(self, cp) and paonde) then
     self.forward.x = self.forward.x * -1
     self.forward.y = math.random(-0.8,0.8)
     ballSpeed = ballSpeed +20
     paonde = false
+    
   end
   
   

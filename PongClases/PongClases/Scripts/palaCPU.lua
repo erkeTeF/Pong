@@ -10,9 +10,9 @@ function PalaC:new()
 end
 
 function PalaC:update(dt)
-  if(self.position.y + 38 < b.position.y-20) then
+  if(self.position.y - self.height * self.scale.y /2 + 38 < b.position.y-20 and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2) then
       self.position.y  = self.position.y + 400 *dt
-    elseif (self.position.y + 38 > b.position.y +20) then
+    elseif (self.position.y - self.height * self.scale.y /2 + 38 > b.position.y +20 and self.position.y > 0 + self.height * self.scale.y /2) then
       self.position.y =self.position.y - 400 *dt
     end
 end

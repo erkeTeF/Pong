@@ -6,10 +6,10 @@ function Pala:new()
 end
 
 function Pala:update(dt)
-  if love.keyboard.isDown("up") then
+  if love.keyboard.isDown("up") and self.position.y > 0 + self.height * self.scale.y /2  then 
  self.position.y  = self.position.y - 400 *dt
 end
-if love.keyboard.isDown ("down") then
+if love.keyboard.isDown ("down") and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2 then
   self.position.y  = self.position.y + 400 *dt
 end
 

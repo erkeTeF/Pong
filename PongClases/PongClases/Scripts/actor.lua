@@ -27,18 +27,20 @@ end
 
 function Actor.intersect(a, b)
     --With locals it's common usage to use underscores instead of camelCasing
-    local ax = a.position.x
-    local ay = a.position.y
-    local aw = a.width * a.scale.x 
+    local ax = a.position.x- (a.width * a.scale.x /2)
+    local ay = a.position.y- (a.height * a.scale.y /2)
+    local aw = a.width *a.scale.x 
     local ah = a.height * a.scale.y
 
-    local bx = b.position.x
-    local by = b.position.y
+    local bx = b.position.x -(b.width * b.scale.x /2) 
+    local by = b.position.y -(b.height * b.scale.y /2) 
     local bw = (b.width * b.scale.x) 
     local bh = (b.height * b.scale.y) 
 
    if ax+aw > bx and ax < bx+bw and ay+ah > by and ay < by+bh then
+     print("rebota")
         return true
+        
     else
         return false
     end
