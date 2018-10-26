@@ -39,6 +39,7 @@ function Ball:update(dt)
       self.forward.y = self.forward.y * -1
       parriba = true
       debeRebotar = false
+      
     end
     
     if ( debeRebotar == false ) then
@@ -46,6 +47,7 @@ function Ball:update(dt)
       time = time - 1 * dt
       if( time < 0 ) then
         debeRebotar = true
+        time = 0.1
       end
     end
     
