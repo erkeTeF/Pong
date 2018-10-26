@@ -9,7 +9,7 @@ function love.load()
   require "Scripts/ball"
   require "Scripts/pala"
   require "Scripts/palaCPU"
-  require "Scripts/Scores"
+  
   require "Scripts/igualahora"
   require "Scripts/bk"
 
@@ -18,7 +18,7 @@ bk = IgualAhora()
  b = Ball()
 p = Pala()
 cp = PalaC()
-s = Scores()
+
   
   table.insert(actorList, sup)
   table.insert(actorList,bk)
@@ -44,8 +44,8 @@ function love.draw()
    for _,v in ipairs(actorList) do
       v:draw()
     end
-    love.graphics.print(playerScore,love.graphics.getWidth() /4, love.graphics.getHeight() / 10)
-    love.graphics.print(cpuScore,love.graphics.getWidth() / 4 * 3, love.graphics.getHeight() / 10)
+    
+   
     
 end
 

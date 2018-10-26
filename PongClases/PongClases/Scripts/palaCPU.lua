@@ -22,4 +22,5 @@ function PalaC:draw()
     sy = self.scale.y
     rr = self.rot
     love.graphics.draw(self.image,xx,yy,rr,sx,sy,ox,oy,0,0)
+     love.graphics.print(cpuScore,love.graphics.getWidth() / 4 * 3, love.graphics.getHeight() / 10)
 end
