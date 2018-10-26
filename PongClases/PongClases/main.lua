@@ -27,6 +27,7 @@ function love.load()
   
   font = love.graphics.setNewFont("Fonts/pong.ttf", 60)
   m1 = love.audio.newSource("Sounds/m1.ogg", "stream")
+  love.audio.setVolume(0.6)
   love.audio.play(m1)
 end
 
