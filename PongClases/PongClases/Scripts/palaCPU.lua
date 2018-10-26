@@ -2,7 +2,7 @@ PalaC = Actor:extend()
 
 function PalaC:new()
     PalaC.super.new(self,"Textures/cpu.png", love.graphics.getWidth()/20 * 19, love.graphics.getHeight()/2, 0, 0,0, 0.112, 0.112)
-    
+    cpuScore = 0
 end
 
 function PalaC:update(dt)
@@ -22,5 +22,5 @@ function PalaC:draw()
     sy = self.scale.y
     rr = self.rot
     love.graphics.draw(self.image,xx,yy,rr,sx,sy,ox,oy,0,0)
-     love.graphics.print(cpuScore,love.graphics.getWidth() / 4 * 3, love.graphics.getHeight() / 10)
+    love.graphics.print(cpuScore,love.graphics.getWidth() / 4 * 3, love.graphics.getHeight() / 10)
 end
