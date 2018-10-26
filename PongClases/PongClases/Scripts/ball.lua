@@ -7,7 +7,8 @@ ballSpeed = initialSpeed
 initialX = love.graphics.getWidth()/2
 initialY = love.graphics.getHeight()/2
 paonde = true
-parriba = false
+debeRebotar = true
+time =  0.1
 end
 
 function Ball:update(dt)
@@ -26,16 +27,27 @@ function Ball:update(dt)
   end
   
   
-  if (self.position.y <0  ) then
+  if (self.position.y <0 and debeRebotar ) then
       self.forward.y = self.forward.y * -1
       parriba = false
+      debeRebotar = false
     end
     
-    if (self.position.y > love.graphics.getHeight() ) then
+    if (self.position.y > love.graphics.getHeight() and debeRebotar ) then
       self.forward.y = self.forward.y * -1
       parriba = true
+      debeRebotar = false
     end
     
+    if ( debeRebotar == false ) then
+      
+      time = time - 1 * dt
+      if( time < 0 ) then
+        debeRebotar = true
+      end
+    end
+    
+      
     if (self.position.x + self.width*self.scale.x < 0 ) then
       self.position.x = initialX
       self.position.y = initialY
