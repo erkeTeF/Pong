@@ -2,6 +2,7 @@ Pala = Actor:extend()
 
 function Pala:new()
     Pala.super.new(self,"Textures/player.png", love.graphics.getWidth()/20, love.graphics.getHeight()/2, 0, 0,0, 0.2, 0.2)    
+    playerScore = 0
 end
 
 function Pala:update(dt)
