@@ -57,12 +57,14 @@ function Ball:update(dt)
       self.position.y = initialY
       ballSpeed = initialSpeed
       cpuScore = cpuScore + 1
+      self.forward.y = 0
     end
     if(self.position.x > love.graphics.getWidth()) then
       self.position.x = initialX
       self.position.y = initialY
       ballSpeed = initialSpeed
       playerScore = playerScore + 1
+      self.forward.y = 0
     end
     
     
