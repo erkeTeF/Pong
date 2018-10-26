@@ -1,12 +1,12 @@
 PalaC = Actor:extend()
 
 function PalaC:new()
-<<<<<<< HEAD
+
     PalaC.super.new(self,"Textures/cpu.png", love.graphics.getWidth()/20 * 19, love.graphics.getHeight()/2, 0, 0,0, 0.112, 0.112)    
-=======
+
     PalaC.super.new(self,"Textures/cpu.png", love.graphics.getWidth()/20 * 19, love.graphics.getHeight()/2, 0, 0,0, 0.112, 0.112)
     cpuScore = 0
->>>>>>> 0dc2b1d9542320087cebff6b621085f55fbb2420
+
 end
 
 function PalaC:update(dt)

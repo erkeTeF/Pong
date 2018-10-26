@@ -26,12 +26,16 @@ function love.load()
   table.insert(actorList,s)
   
   font = love.graphics.setNewFont("Fonts/pong.ttf", 60)
+  m1 = love.audio.newSource("Sounds/m1.ogg", "stream")
+  love.audio.play(m1)
 end
 
 function love.update(dt)
   for _,v in ipairs(actorList) do
       v:update(dt)
   end
+  
+  
 end
 
 function love.draw()
