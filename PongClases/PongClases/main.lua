@@ -8,15 +8,14 @@ function love.load()
   require "Scripts/actor"
   require "Scripts/ball"
   require "Scripts/pala"
-  require "Scripts/palaCPU"
   require "Scripts/background"
   require "Scripts/score"
 
   bk1 = Back("Textures/grass.jpeg", 1, 1.2)
   bk2 = Back("Textures/pokegym.png", 2, 3.1)
   b = Ball()
-  p = Pala()
-  cp = PalaC()
+  p = Pala("player", love.graphics.getWidth() / 20, love.graphics.getHeight()/2, 0.2, 0.2)
+  cp = Pala("cpu", love.graphics.getWidth() / 20 * 19, love.graphics.getHeight()/2, 0.112, 0.1120)
   s = Score("player",love.graphics.getWidth() / 4, love.graphics.getHeight() / 10)
   scpu = Score("cpu",love.graphics.getWidth() / 4*3, love.graphics.getHeight() / 10)
   
