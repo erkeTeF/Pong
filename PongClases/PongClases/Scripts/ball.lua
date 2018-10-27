@@ -13,16 +13,36 @@ end
 
 function Ball:update(dt)
   if (Actor.intersect(self, p) and derecha == false) then
-    self.forward.x = self.forward.x * -1
-    self.forward.y = math.random(-0.8,0.8)
-    ballSpeed = ballSpeed +20
+    if b.position.x - b.scale.x / 2 < p.position.x + p.scale.x / 2 then
+      self.forward.y = self.forward.y * -1
+    elseif b.position.y + b.scale.y > p.position.y - p.scale.y / 2 then
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(0,0.8)
+    elseif b.position.y - b.scale.y < p.position.y + p.scale.y / 2 then
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(-0.8,0)
+    else
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(-0.8,0.8)
+    end
+    ballSpeed = ballSpeed + 20
     derecha = true
   end
 
   if (Actor.intersect(self, cpu) and derecha) then
-    self.forward.x = self.forward.x * -1
-    self.forward.y = math.random(-0.8,0.8)
-    ballSpeed = ballSpeed +20
+    if b.position.x + b.scale.x / 2 > cpu.position.x - cpu.scale.x / 2 then
+      self.forward.y = self.forward.y * -1
+    elseif b.position.y + b.scale.y - cpu.scale.y / 2 then
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(0,0.8)
+    elseif b.position.y - b.scale.y < cpu.position.y + cpu.scale.y / 2 then
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(-0.8,0)
+    else
+      self.forward.x = self.forward.x * -1
+      self.forward.y = math.random(-0.8,0.8)
+    end
+    ballSpeed = ballSpeed + 20
     derecha = false
   end
 
@@ -52,6 +72,7 @@ function Ball:update(dt)
       ballSpeed = initialSpeed
       cpuScore = cpuScore + 1
       self.forward.y = 0
+      derecha = false
   end
 
   if(self.position.x > love.graphics.getWidth()) then
@@ -60,6 +81,7 @@ function Ball:update(dt)
       ballSpeed = initialSpeed
       playerScore = playerScore + 1
       self.forward.y = 0
+      derecha = true
   end
   b.position.x = b.position.x + ballSpeed * self.forward.x * dt
   b.position.y = b.position.y + ballSpeed * self.forward.y * dt

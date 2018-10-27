@@ -2,7 +2,6 @@ actorList = {}  --Lista de elementos de juego
 
 
 function love.load()
-  loadfile ("Scripts/data")
   require "Lib/vector"
   Object = require "Lib/object"
   require "Scripts/actor"
@@ -10,14 +9,15 @@ function love.load()
   require "Scripts/pala"
   require "Scripts/background"
   require "Scripts/score"
+  require "Scripts/data"
 
-  bk1 = Back("Textures/grass.jpeg", 1, 1.2)
-  bk2 = Back("Textures/pokegym.png", 2, 3.1)
+  bk1 = Back("Textures/grass.jpeg", bk1ScaleX, bk1ScaleY)
+  bk2 = Back("Textures/pokegym.png", bk2ScaleX, bk2ScaleY)
   b = Ball()
-  p = Pala("player", love.graphics.getWidth() / 20, love.graphics.getHeight()/2, 0.2, 0.2)
-  cpu = Pala("cpu", love.graphics.getWidth() / 20 * 19, love.graphics.getHeight()/2, 0.112, 0.1120)
-  s = Score("player",love.graphics.getWidth() / 4, love.graphics.getHeight() / 10)
-  scpu = Score("cpu",love.graphics.getWidth() / 4*3, love.graphics.getHeight() / 10)
+  p = Pala("player", playerPosX, playerPosY, playerScaleX, playerScaleY, speed)
+  cpu = Pala("cpu", cpuPosX, cpuPosY, cpuScaleX, cpuScaleY, speed)
+  s = Score("player", playerScoreX, playerScoreY)
+  scpu = Score("cpu",cpuScoreX, cpuScoreY)
   
   table.insert(actorList,bk1)
   table.insert(actorList,bk2)
@@ -27,9 +27,8 @@ function love.load()
   table.insert(actorList,s)
   table.insert(actorList,scpu)
   
-  
   m1 = love.audio.newSource("Sounds/m1.ogg", "stream")
-  love.audio.setVolume(0.6)
+  love.audio.setVolume(volume)
   love.audio.play(m1)
 end
 
