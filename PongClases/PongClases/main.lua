@@ -9,17 +9,16 @@ function love.load()
   require "Scripts/ball"
   require "Scripts/pala"
   require "Scripts/palaCPU"
-  require "Scripts/igualahora"
-  require "Scripts/bk"
+  require "Scripts/background"
 
-  sup = Back()
-  bk = IgualAhora()
+  bk1 = Back("Textures/grass.jpeg", 1, 1.2)
+  bk2 = Back("Textures/pokegym.png", 2, 3.1)
   b = Ball()
   p = Pala()
   cp = PalaC()
   
-  table.insert(actorList,sup)
-  table.insert(actorList,bk)
+  table.insert(actorList,bk1)
+  table.insert(actorList,bk2)
   table.insert(actorList,b)
   table.insert(actorList,p)
   table.insert(actorList,cp)

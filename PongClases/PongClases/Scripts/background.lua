@@ -1,13 +1,10 @@
 Back = Actor:extend()
 
-
-function Back:new()
-  Back.super.new(self,"Textures/grass.jpeg", love.graphics.getWidth()/2, love.graphics.getHeight()/2, 0, 0,0, 1, 1.2)    
+function Back:new(background, sx, sy)
+  Back.super.new(self,background, love.graphics.getWidth()/2, love.graphics.getHeight()/2, 0, 0,0, sx, sy)    
 end
 
 function Back:update(dt)
-  
-  
 end
 
 function Back:draw()

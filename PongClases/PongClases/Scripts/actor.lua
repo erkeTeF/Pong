@@ -24,7 +24,6 @@ function Actor.dist(a,b)
   return v:len()
 end
 
-
 function Actor.intersect(a, b)
     --With locals it's common usage to use underscores instead of camelCasing
     local ax = a.position.x- (a.width * a.scale.x /2)
@@ -38,10 +37,8 @@ function Actor.intersect(a, b)
     local bh = (b.height * b.scale.y) 
 
    if ax+aw > bx and ax < bx+bw and ay+ah > by and ay < by+bh then
-     print("rebota")
         return true
-        
-    else
+     else
         return false
     end
 end
