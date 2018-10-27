@@ -1,17 +1,27 @@
 Pala = Actor:extend()
 
-function Pala:new()
-    Pala.super.new(self,"Textures/player.png", love.graphics.getWidth()/20, love.graphics.getHeight()/2, 0, 0,0, 0.2, 0.2)    
+function Pala:new(player, x, y, sx, sy)
+    Pala.super.new(self,"Textures/"..player..".png", x, y, 0, 0,0, sx, sy)    
+    self.player = player
     playerScore = 0
+    cpuScore = 0
 end
 
 function Pala:update(dt)
-  if love.keyboard.isDown("up") and self.position.y > 0 + self.height * self.scale.y /2  then 
- self.position.y  = self.position.y - 400 *dt
-end
-if love.keyboard.isDown ("down") and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2 then
-  self.position.y  = self.position.y + 400 *dt
-end
+    if self.player == "player" then
+        if love.keyboard.isDown("up") and self.position.y > 0 + self.height * self.scale.y /2  then 
+            self.position.y  = self.position.y - 400 *dt
+        end
+        if love.keyboard.isDown ("down") and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2 then
+            self.position.y  = self.position.y + 400 *dt
+        end
+    else
+        if(self.position.y - self.height * self.scale.y /2 + 38 < b.position.y-20 and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2) then
+            self.position.y  = self.position.y + 400 *dt
+        elseif (self.position.y - self.height * self.scale.y /2 + 38 > b.position.y +20 and self.position.y > 0 + self.height * self.scale.y /2) then
+            self.position.y =self.position.y - 400 *dt
+        end
+    end
 
 end
 
@@ -24,6 +34,5 @@ function Pala:draw()
     sy = self.scale.y
     rr = self.rot
     love.graphics.draw(self.image,xx,yy,rr,sx,sy,ox,oy,0,0)
-    love.graphics.print(playerScore,love.graphics.getWidth() /4, love.graphics.getHeight() / 10)
 end
 
