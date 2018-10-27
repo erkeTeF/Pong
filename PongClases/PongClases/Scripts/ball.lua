@@ -1,11 +1,13 @@
 Ball = Actor:extend()
 
-function Ball:new(speed)
-  Ball.super.new(self,"Textures/PokeBall.png", love.graphics.getWidth()/2, love.graphics.getHeight()/2, speed, 1,0.75, 0.2, 0.2)    
-  initialSpeed = 400
-  ballSpeed = initialSpeed
-  initialX = love.graphics.getWidth()/2
-  initialY = love.graphics.getHeight()/2
+function Ball:new(speed, speedSum, x, y, fx, fy, scale, rAngle)
+  Ball.super.new(self,"Textures/PokeBall.png", x, y, speed, fx, fy, scale, scale)
+  self.speed = speed   
+  self.speedSum = speedSum 
+  self.rAngle = rAngle
+  ballSpeed = self.speed
+  initialX = x
+  initialY = y
   derecha = true
   debeRebotar = true
   time =  0.1
@@ -13,40 +15,42 @@ end
 
 function Ball:update(dt)
   if (Actor.intersect(self, p) and derecha == false) then
-    if b.position.x - b.scale.x / 2 < p.position.x + p.scale.x / 2 then
+    if self.position.x - self.height * self.scale.x / 2 < p.position.x then
       self.forward.y = self.forward.y * -1
-    elseif b.position.y + b.scale.y > p.position.y - p.scale.y / 2 then
+    elseif self.position.y + self.height * self.scale.y > p.position.y then
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(0,0.8)
-    elseif b.position.y - b.scale.y < p.position.y + p.scale.y / 2 then
+      self.forward.y = math.random(0, self.rAngle) / 10
+    elseif self.position.y - self.height * self.scale.y < p.position.y then
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(-0.8,0)
+      self.forward.y = math.random(-self.rAngle, 0) / 10
     else
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(-0.8,0.8)
+      self.forward.y = math.random(-self.rAngle, self.rAngle) / 10
     end
-    ballSpeed = ballSpeed + 20
+    ballSpeed = ballSpeed + self.speedSum
     derecha = true
+    print(self.forward.y)
   end
 
   if (Actor.intersect(self, cpu) and derecha) then
-    if b.position.x + b.scale.x / 2 > cpu.position.x - cpu.scale.x / 2 then
+    if self.position.x - self.height * self.scale.x / 2 > cpu.position.x then
       self.forward.y = self.forward.y * -1
-    elseif b.position.y + b.scale.y - cpu.scale.y / 2 then
+    elseif self.position.y + self.height * self.scale.y > cpu.position.y then
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(0,0.8)
-    elseif b.position.y - b.scale.y < cpu.position.y + cpu.scale.y / 2 then
+      self.forward.y = math.random(0,self.rAngle) / 10
+    elseif self.position.y - self.height * self.scale.y < cpu.position.y then
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(-0.8,0)
+      self.forward.y = math.random(-self.rAngle,0) / 10
     else
       self.forward.x = self.forward.x * -1
-      self.forward.y = math.random(-0.8,0.8)
+      self.forward.y = math.random(-self.rAngle,self.rAngle) / 10
     end
-    ballSpeed = ballSpeed + 20
+    ballSpeed = ballSpeed + self.speedSum
     derecha = false
+    print(self.forward.y)
   end
 
-  if (self.position.y <0 and debeRebotar ) then
+  if (self.position.y < 0 and debeRebotar ) then
       self.forward.y = self.forward.y * -1
       parriba = false
       debeRebotar = false
@@ -59,7 +63,7 @@ function Ball:update(dt)
   end
     
   if ( debeRebotar == false ) then
-    time = time - 1 * dt
+    time = time - dt
     if( time < 0 ) then
       debeRebotar = true
       time = 0.1
@@ -69,7 +73,7 @@ function Ball:update(dt)
   if (self.position.x + self.width*self.scale.x < 0 ) then
       self.position.x = initialX
       self.position.y = initialY
-      ballSpeed = initialSpeed
+      ballSpeed = self.speed
       cpuScore = cpuScore + 1
       self.forward.y = 0
       derecha = false
@@ -78,13 +82,13 @@ function Ball:update(dt)
   if(self.position.x > love.graphics.getWidth()) then
       self.position.x = initialX
       self.position.y = initialY
-      ballSpeed = initialSpeed
+      ballSpeed = self.speed
       playerScore = playerScore + 1
       self.forward.y = 0
       derecha = true
   end
-  b.position.x = b.position.x + ballSpeed * self.forward.x * dt
-  b.position.y = b.position.y + ballSpeed * self.forward.y * dt
+  self.position.x = self.position.x + ballSpeed * self.forward.x * dt
+  self.position.y = self.position.y + ballSpeed * self.forward.y * dt
 end
 
 function Ball:draw()

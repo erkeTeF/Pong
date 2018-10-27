@@ -1,7 +1,7 @@
 Back = Actor:extend()
 
-function Back:new(background, sx, sy)
-  Back.super.new(self,background, love.graphics.getWidth()/2, love.graphics.getHeight()/2, 0, 0,0, sx, sy)    
+function Back:new(background, x, y, sx, sy)
+  Back.super.new(self,background, x, y, 0, 0, 0, sx, sy)    
 end
 
 function Back:update(dt)

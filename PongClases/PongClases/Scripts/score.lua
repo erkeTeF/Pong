@@ -1,9 +1,14 @@
 Score = Actor:extend()
-function Score:new(player,x,y)
-    font = love.graphics.setNewFont("Fonts/pong.ttf", 60)
+function Score:new(px,py,cx,cy,fontSize)
+    font = love.graphics.setNewFont("Fonts/pong.ttf", fontSize)
     self.player = player
-    self.xx = x
-    self.yy = y
+    self.pxx = px
+    self.pyy = py
+    self.cxx = cx
+    self.cyy = cy
+    
+    playerScore = 0
+    cpuScore = 0
 end
 
 function Score:update(dt)
@@ -11,9 +16,6 @@ function Score:update(dt)
 end
 
 function Score:draw()
-    if self.player == "player" then
-    love.graphics.print(playerScore, self.xx, self.yy)
-    else
-    love.graphics.print(cpuScore, self.xx, self.yy)
-    end
+    love.graphics.print(playerScore, self.pxx, self.pyy)
+    love.graphics.print(cpuScore, self.cxx, self.cyy)
 end

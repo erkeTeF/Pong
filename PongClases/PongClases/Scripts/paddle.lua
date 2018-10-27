@@ -1,14 +1,13 @@
-Pala = Actor:extend()
+Paddle = Actor:extend()
 
-function Pala:new(player, x, y, sx, sy, speed)
-    Pala.super.new(self,"Textures/"..player..".png", x, y, 0, 0,0, sx, sy)    
+function Paddle:new(player, x, y, scale, speed, OMargin)
+    Paddle.super.new(self,"Textures/"..player..".png", x, y, 0, 0,0, scale, scale)    
     self.player = player
     self.speed = speed
-    playerScore = 0
-    cpuScore = 0
+    self.margin = OMargin
 end
 
-function Pala:update(dt)
+function Paddle:update(dt)
     if self.player == "player" then
         if love.keyboard.isDown("up") and self.position.y > 0 + self.height * self.scale.y /2  then 
             self.position.y  = self.position.y - self.speed *dt
@@ -17,16 +16,16 @@ function Pala:update(dt)
             self.position.y  = self.position.y + self.speed *dt
         end
     else
-        if(self.position.y - self.height * self.scale.y /2 + 38 < b.position.y-20 and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2) then
+        if(self.position.y - self.height * self.scale.y /2 + self.margin < b.position.y - self.margin and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2) then
             self.position.y  = self.position.y + self.speed *dt
-        elseif (self.position.y - self.height * self.scale.y /2 + 38 > b.position.y +20 and self.position.y > 0 + self.height * self.scale.y /2) then
+        elseif (self.position.y - self.height * self.scale.y /2 + self.margin > b.position.y + self.margin and self.position.y > 0 + self.height * self.scale.y /2) then
             self.position.y =self.position.y - self.speed *dt
         end
     end
 
 end
 
-function Pala:draw()
+function Paddle:draw()
     xx = self.position.x
     ox = self.origin.x
     yy = self.position.y
