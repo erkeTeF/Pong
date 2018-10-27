@@ -19,7 +19,7 @@ function Ball:update(dt)
     derecha = true
   end
 
-  if (Actor.intersect(self, cp) and derecha) then
+  if (Actor.intersect(self, cpu) and derecha) then
     self.forward.x = self.forward.x * -1
     self.forward.y = math.random(-0.8,0.8)
     ballSpeed = ballSpeed +20
