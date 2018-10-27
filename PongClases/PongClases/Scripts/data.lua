@@ -1,3 +1,18 @@
+--Menu
+mPosX, mPosY = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
+mScaleX, mScaleY = 1, 1
+menu = true
+
+--MenuSelector
+msPosX, msPosY = 500, 375
+msScaleX, msScaleY = 0.1, 0.1
+
+--GameOver
+goPosX, goPosY = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
+goScaleX, goScaleY = 1, 1
+gameOverMenu = false
+timer = 1
+
 --Background
 bk1PosX, bk1PosY = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
 bk2PosX, bk2PosY = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
@@ -23,6 +38,8 @@ OMargin = 38
 playerScoreX, playerScoreY = love.graphics.getWidth() / 4, love.graphics.getHeight() / 10
 cpuScoreX, cpuScoreY = love.graphics.getWidth() / 4*3, love.graphics.getHeight() / 10
 fontSize = 60
+startingScore = 0
+maxScore = 7
 
 --Audio
 volume = 0.4
