@@ -4,7 +4,7 @@ actorList = {}  --Lista de elementos de juego
 function love.load()
   require "Lib/vector"
   Object = require "Lib/object"
-  require "Scripts/actor"
+  require "Lib/actor"
   require "Scripts/ball"
   require "Scripts/paddle"
   require "Scripts/background"
