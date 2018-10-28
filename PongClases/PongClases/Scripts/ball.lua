@@ -1,10 +1,10 @@
 Ball = Actor:extend()
 
-function Ball:new(speed, speedSum, x, y, fx, fy, scale, rAngle)
+function Ball:new(speed, x, y, fx, fy, scale)
   Ball.super.new(self,"Textures/PokeBall.png", x, y, speed, fx, fy, scale, scale)
   self.speed = speed   
-  self.speedSum = speedSum 
-  self.rAngle = rAngle
+  self.speedSum = ballSpeedSum 
+  self.rAngle = ballRndAngle
   ballSpeed = self.speed
   initialX = x
   initialY = y
@@ -29,7 +29,6 @@ function Ball:update(dt)
     end
     ballSpeed = ballSpeed + self.speedSum
     derecha = true
-    print(self.forward.y)
   end
 
   if (Actor.intersect(self, cpu) and derecha) then
@@ -47,7 +46,6 @@ function Ball:update(dt)
     end
     ballSpeed = ballSpeed + self.speedSum
     derecha = false
-    print(self.forward.y)
   end
 
   if (self.position.y < 0 and debeRebotar ) then

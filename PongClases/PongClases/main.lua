@@ -14,23 +14,23 @@ function love.load()
   require "Scripts/menuSelector"
   require "Scripts/gameOver"
 
-  m = Menu("Textures/menu.png", mPosX, mPosY, mScaleX, mScaleY)
-  ms = MenuSelector("Textures/ultraBall.png", msPosX, msPosY, msScaleX, msScaleY)
-  go = GameOver("Textures/gameOver.png", goPosX, goPosY, goScaleX, goScaleY)
-  bk1 = Back("Textures/grass.jpeg",bk1PosX, bk1PosY, bk1ScaleX, bk1ScaleY)
-  bk2 = Back("Textures/pokegym.png",bk2PosX, bk2PosY, bk2ScaleX, bk2ScaleY)
-  b = Ball(speed, ballSpeedSum, ballPosX, ballPosY, ballForwardX, ballForwardY, ballScale, ballRndAngle)
-  p = Paddle("player", playerPosX, playerPosY, playerScale, speed, OMargin)
-  cpu = Paddle("cpu", cpuPosX, cpuPosY, cpuScale, speed, OMargin)
-  s = Score(playerScoreX, playerScoreY, cpuScoreX, cpuScoreY, fontSize)
+  m = Menu(menuImage, mPosX, mPosY, mScaleX, mScaleY)
+  ms = MenuSelector(msImage, msPosX, msPosY, msScaleX, msScaleY)
+  go = GameOver(goImage, goPosX, goPosY, goScaleX, goScaleY)
+  bk1 = Back(bk1Image,bk1PosX, bk1PosY, bk1ScaleX, bk1ScaleY)
+  bk2 = Back(bk2Image,bk2PosX, bk2PosY, bk2ScaleX, bk2ScaleY)
+  b = Ball(speed, ballPosX, ballPosY, ballForwardX, ballForwardY, ballScale)
+  p = Paddle("player", playerPosX, playerPosY, playerScale, speed)
+  cpu = Paddle("cpu", cpuPosX, cpuPosY, cpuScale, speed)
+  s = Score(playerScoreX, playerScoreY, cpuScoreX, cpuScoreY)
   
  
   table.insert(actorList,m)
   table.insert(actorList,ms)
   
-  m1 = love.audio.newSource("Sounds/m1.ogg", "stream")
-  m2 = love.audio.newSource("Sounds/m2.ogg", "stream")
-  m3 = love.audio.newSource("Sounds/m3.ogg", "stream")
+  m1 = love.audio.newSource(m1Audio, "stream")
+  m2 = love.audio.newSource(m2Audio, "stream")
+  m3 = love.audio.newSource(m3Audio, "stream")
   love.audio.setVolume(volume)
   love.audio.play(m1)
 end
@@ -73,7 +73,6 @@ function love.update(dt)
   if gameOverMenu then
     timer = timer - 1 * dt
   end
-  
 end
 
 function love.draw()
@@ -99,5 +98,3 @@ function love.keyreleased(key)
     love.event.push('quit')
   end
 end
-
-

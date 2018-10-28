@@ -1,7 +1,7 @@
 Menu = Actor:extend()
 
-function Menu:new(menu, x, y, sx, sy)
-  Back.super.new(self, menu, x, y, 0, 0, 0, sx, sy)
+function Menu:new(image, x, y, sx, sy)
+  Back.super.new(self, image, x, y, 0, 0, 0, sx, sy)
 end
 
 function Menu:update(dt)

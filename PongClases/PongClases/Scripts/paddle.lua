@@ -1,6 +1,6 @@
 Paddle = Actor:extend()
 
-function Paddle:new(player, x, y, scale, speed, OMargin)
+function Paddle:new(player, x, y, scale, speed)
     Paddle.super.new(self,"Textures/"..player..".png", x, y, 0, 0,0, scale, scale)    
     self.player = player
     self.speed = speed
@@ -17,12 +17,11 @@ function Paddle:update(dt)
         end
     else
         if(self.position.y - self.height * self.scale.y /2 + self.margin < b.position.y - self.margin and self.position.y<love.graphics.getHeight() - self.height * self.scale.y /2) then
-            self.position.y  = self.position.y + self.speed *dt
+            self.position.y = self.position.y + self.speed *dt
         elseif (self.position.y - self.height * self.scale.y /2 + self.margin > b.position.y + self.margin and self.position.y > 0 + self.height * self.scale.y /2) then
-            self.position.y =self.position.y - self.speed *dt
+            self.position.y = self.position.y - self.speed *dt
         end
     end
-
 end
 
 function Paddle:draw()

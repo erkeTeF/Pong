@@ -1,7 +1,7 @@
 MenuSelector = Actor:extend()
 
-function MenuSelector:new(menuSelector, x, y, sx, sy)
-  MenuSelector.super.new(self, menuSelector, x, y, 0, 0, 0, sx, sy)
+function MenuSelector:new(image, x, y, sx, sy)
+  MenuSelector.super.new(self, image, x, y, 0, 0, 0, sx, sy)
   play = true
   scaling = true
 end
@@ -9,28 +9,24 @@ end
 function MenuSelector:update(dt)
    if love.keyboard.isDown("down") and play then
      play = false
-     self.position.y = 500
+     self.position.y = msPosX
    elseif love.keyboard.isDown("up") and play == false then
      play = true
-     self.position.y = 375
+     self.position.y = msPosY
    end
    if scaling then
-     self.scale.x = self.scale.x + 0.05 * dt
-     self.scale.y = self.scale.x + 0.05 * dt
+     self.scale.x = self.scale.x + scaleValue * dt
+     self.scale.y = self.scale.x + scaleValue * dt
     else
-      self.scale.x = self.scale.x - 0.05 * dt
-      self.scale.y = self.scale.x - 0.05 * dt
+      self.scale.x = self.scale.x - scaleValue * dt
+      self.scale.y = self.scale.x - scaleValue * dt
     end
-    
-    if self.scale.x > 0.12 then
+    if self.scale.x > maxScale then
       scaling = false
     end
-    if self.scale.x < 0.08 then
+    if self.scale.x < minScale then
       scaling = true
     end
-    
-      
-     
 end
 
 function MenuSelector:draw()

@@ -1,5 +1,5 @@
 Score = Actor:extend()
-function Score:new(px,py,cx,cy,fontSize)
+function Score:new(px,py,cx,cy)
     font = love.graphics.setNewFont("Fonts/pong.ttf", fontSize)
     self.player = player
     self.pxx = px
@@ -7,12 +7,11 @@ function Score:new(px,py,cx,cy,fontSize)
     self.cxx = cx
     self.cyy = cy
     
-    playerScore = 0
-    cpuScore = 0
+    playerScore = startingScore
+    cpuScore = startingScore
 end
 
 function Score:update(dt)
-
 end
 
 function Score:draw()
